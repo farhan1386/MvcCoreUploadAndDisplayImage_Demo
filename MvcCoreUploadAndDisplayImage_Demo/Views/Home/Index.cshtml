@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MvcCoreUploadAndDisplayImage_Demo.Models.Employee>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h4 class="text-center text-uppercase">List of employee</h4>
+
+<p>
+    <a asp-action="New" class="btn btn-sm btn-primary rounded-0 text-uppercase"><i class="fas fa-plus-circle"></i> Add New</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.FullName)</th>
+            <th>@Html.DisplayNameFor(model => model.Gender)</th>
+            <th>@Html.DisplayNameFor(model => model.Age)</th>
+            <th>@Html.DisplayNameFor(model => model.Position)</th>
+            <th>@Html.DisplayNameFor(model => model.Office)</th>
+            <th>@Html.DisplayNameFor(model => model.Salary)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/images/@employee.ProfilePicture" 
+                         class="rounded-circle" 
+                         height="40" width="40" 
+                         asp-append-version="true" />
+                    @employee.FullName
+                </td>
+                <td>@employee.Gender</td>
+                <td>@employee.Age</td>
+                <td>@employee.Office</td>
+                <td>@employee.Position</td>
+                <td>@employee.Salary</td>
+            </tr>
+        }
+    </tbody>
+</table>
